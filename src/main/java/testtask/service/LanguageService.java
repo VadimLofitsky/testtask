@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import testtask.model.Language;
-import testtask.repository.LanguageRepository;
 import testtask.service.response.ResponseState;
 import testtask.service.response.ServiceResponse;
 
@@ -12,30 +11,39 @@ import java.util.List;
 
 @Service
 public class LanguageService {
-    private LanguageRepository repository;
+    private DBService dbService;
 
     @Autowired
-    public LanguageService(LanguageRepository repository) {
-        this.repository = repository;
+    public LanguageService(DBService dbService) {
+        this.dbService = dbService;
     }
 
-    public List<Language> getAll() {
-        return repository.findAll();
+    public JsonNode getAll() {
+        List<Language> all = dbService.getAll();
+        return ServiceResponse.get(all);
     }
 
-    public Language getByName(String name) {
-        return repository.findByName(name);
+    public JsonNode getByName(String name) {
+        Language language = dbService.getByName(name);
+        return ServiceResponse.get(language);
     }
 
     public JsonNode save(Language language) {
-        Language saved = repository.save(language);
-        JsonNode response = ServiceResponse.get(ResponseState.OK, saved);
+        Language saved = dbService.save(language);
+        return ServiceResponse.get(ResponseState.OK, saved);
+    }
 
-        return response;
+    public JsonNode edit(String name, Language editLang) {
+        Language language = dbService.getByName(name);
+        language.setDescription(editLang.getDescription());
+        language.setRating(editLang.getRating());
+
+        Language saved = dbService.save(language);
+        return ServiceResponse.get(ResponseState.OK, saved);
     }
 
     public JsonNode delete(String name) {
-        repository.deleteByName(name);
+        dbService.delete(name);
 
         return ServiceResponse.get(ResponseState.OK);
     }
