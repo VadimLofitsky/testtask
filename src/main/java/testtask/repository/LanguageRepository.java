@@ -11,6 +11,7 @@ import java.util.List;
 public interface LanguageRepository extends JpaRepository<Language, Long> {
     List<Language> findAll();
     Language findByName(String name);
+    Language findByRating(int rating);
 
     @Transactional
     void deleteByName(String name);

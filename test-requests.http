@@ -1,0 +1,143 @@
+#Get all
+GET http://localhost:8081/language
+
+###
+
+#Get Java
+GET http://localhost:8081/language/Java
+
+###
+
+#Add new valid
+POST http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+{ "name": "C++", "description": "...",
+  "rating": 3
+}
+
+###
+
+#Valid edit existing language (C++)
+PUT http://localhost:8081/language/C%2B%2B
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "ba ba ba",
+  "rating": 3
+}
+
+###
+
+#Delete existing language (C++)
+DELETE http://localhost:8081/language/C%2B%2B
+
+###
+
+#
+#Invalid requests
+#
+
+#Delete non-existing language (C++)
+DELETE http://localhost:8081/language/C%2B%2B
+
+###
+
+#Get non-existing language (C++)
+GET http://localhost:8081/language/C%2B%2B
+
+###
+
+#Add new invalid language (missed json)
+POST http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+###
+
+#Add new invalid language (invalid name C)
+POST http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+{ "name": "C", "description": "...",
+  "rating": 3
+}
+
+###
+
+#Add new invalid language (invalid rating)
+POST http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+{ "name": "C++", "description": "...",
+  "rating": 6
+}
+
+###
+
+#Add new invalid language (missed language)
+POST http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "...",
+  "rating": 6
+}
+
+###
+
+#Invalid edit existing language (Java) (invalid rating - already used)
+PUT http://localhost:8081/language/Java
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "Java is so Java",
+  "rating": 1
+}
+
+###
+
+#Invalid edit existing language (Java) (rating missed)
+PUT http://localhost:8081/language/Java
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "Java is so Java"}
+
+###
+
+#Invalid edit existing (language missed)
+PUT http://localhost:8081/language
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "Java is so Java",
+  "rating": 4
+}
+
+###
+
+#Invalid edit existing language (Java) (invalid rating - out of range)
+PUT http://localhost:8081/language/Java
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "Java is so Java",
+  "rating": 0
+}
+
+###
+
+#Invalid edit - non-existing language (FORTRAN)
+PUT http://localhost:8081/language/FORTRAN
+Content-Type: application/json
+Accept: application/json
+
+{ "description": "ancient language",
+  "rating": 3
+}
+
+###

@@ -24,6 +24,10 @@ public class DBService {
         return repository.findByName(name);
     }
 
+    public Language getByRating(int rating) {
+        return repository.findByRating(rating);
+    }
+
     public Language save(Language language) {
         return repository.save(language);
     }

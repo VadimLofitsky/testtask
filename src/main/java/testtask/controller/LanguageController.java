@@ -31,7 +31,7 @@ public class LanguageController {
     // Add new language described by request body json
     @PostMapping("")
     public JsonNode add(@RequestBody Language newLang) {
-        return service.save(newLang);
+        return service.add(newLang);
     }
 
     // Edit language
