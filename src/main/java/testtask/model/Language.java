@@ -11,7 +11,6 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@Table(name = "proglang")
 public class Language {
     @Id
     private String name;
