@@ -3,6 +3,7 @@ package testtask.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import testtask.exception.NoSuchLanguageException;
 import testtask.model.Language;
 import testtask.service.response.ResponseState;
 import testtask.service.response.ServiceResponse;
@@ -25,6 +26,11 @@ public class LanguageService {
 
     public JsonNode getByName(String name) {
         Language language = dbService.getByName(name);
+
+        if (language == null) {
+            throw new NoSuchLanguageException(name);
+        }
+
         return ServiceResponse.get(language);
     }
 
