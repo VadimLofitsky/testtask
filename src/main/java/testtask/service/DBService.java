@@ -7,6 +7,9 @@ import testtask.repository.LanguageRepository;
 
 import java.util.List;
 
+
+// helper class for database operations
+
 @Service
 public class DBService {
     private LanguageRepository repository;
