@@ -1,13 +1,7 @@
 package testtask.exception;
 
-public class LanguageAlreadyExistsException extends RuntimeException {
-    private String langName;
-
+public class LanguageAlreadyExistsException extends LanguageNameException {
     public LanguageAlreadyExistsException(String langName) {
-        this.langName = langName;
-    }
-
-    public String getLangName() {
-        return langName;
+        super(langName);
     }
 }

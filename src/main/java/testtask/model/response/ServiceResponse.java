@@ -1,4 +1,4 @@
-package testtask.service.response;
+package testtask.model.response;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -1,4 +1,4 @@
-package testtask.service.response;
+package testtask.model.response;
 
 public enum ResponseState {
 

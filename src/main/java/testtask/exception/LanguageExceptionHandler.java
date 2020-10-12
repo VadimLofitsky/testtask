@@ -1,12 +1,12 @@
 package testtask.exception;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import testtask.model.response.ResponseState;
 
 import java.util.Arrays;
 
@@ -14,9 +14,13 @@ import java.util.Arrays;
 public class LanguageExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Data
-    @AllArgsConstructor
     private static final class LanguageException {
         private String reason;
+        private String state = ResponseState.ERROR.toString();
+
+        public LanguageException(String reason) {
+            this.reason = reason;
+        }
     }
 
     @ExceptionHandler(NoSuchLanguageException.class)

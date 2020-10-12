@@ -8,8 +8,8 @@ import testtask.exception.LanguageNameMissedException;
 import testtask.exception.NoSuchLanguageException;
 import testtask.exception.RatingAlreadyExistsException;
 import testtask.model.Language;
-import testtask.service.response.ResponseState;
-import testtask.service.response.ServiceResponse;
+import testtask.model.response.ResponseState;
+import testtask.model.response.ServiceResponse;
 import testtask.validation.LanguageValidator;
 
 import java.util.List;
