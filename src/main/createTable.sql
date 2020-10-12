@@ -1,5 +1,5 @@
 create table if not exists language(
-     name text UNIQUE,
+     name text PRIMARY KEY,
      description text,
      rating INT UNIQUE
 );
