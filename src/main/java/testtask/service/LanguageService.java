@@ -25,11 +25,13 @@ public class LanguageService {
         this.validator = validator;
     }
 
+    // get all stored languages
     public JsonNode getAll() {
         List<Language> all = dbService.getAll();
         return ServiceResponse.get(all);
     }
 
+    // get language with specified name
     public JsonNode getByName(String name) {
         Language language = dbService.getByName(name);
 
@@ -46,6 +48,7 @@ public class LanguageService {
         return ServiceResponse.get(ResponseState.OK, saved);
     }
 
+    // add new language
     public JsonNode add(Language newLang) {
         String name = newLang.getName();
         int rating = newLang.getRating();
@@ -74,6 +77,7 @@ public class LanguageService {
         return save(newLang);
     }
 
+    // edit existing language
     public JsonNode edit(String name, Language editLang) {
         int newRating = editLang.getRating();
         validator.validateRating(newRating);
@@ -96,6 +100,7 @@ public class LanguageService {
         return save(language);
     }
 
+    // delete language
     public JsonNode delete(String name) {
         Language byName = dbService.getByName(name);
         if (byName == null) {

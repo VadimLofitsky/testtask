@@ -13,6 +13,8 @@ import java.util.Arrays;
 @ControllerAdvice
 public class LanguageExceptionHandler extends ResponseEntityExceptionHandler {
 
+    // the class describing error messages on handling exceptions
+    // the fields are being shown in the message
     @Data
     private static final class LanguageException {
         private String reason;
