@@ -1,16 +1,12 @@
 package testtask.exception;
 
-public class InvalidLanguageRatingException extends RuntimeException {
-    private int rating, min, max;
+public class InvalidLanguageRatingException extends LanguageRatingException {
+    private int min, max;
 
     public InvalidLanguageRatingException(int rating, int min, int max) {
-        this.rating = rating;
+        super(rating);
         this.min = min;
         this.max = max;
-    }
-
-    public int getRating() {
-        return rating;
     }
 
     public int getMin() {
